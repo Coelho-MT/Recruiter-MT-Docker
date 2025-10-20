@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Analytics | MicroTech</title>
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+</head>
+<body class="bg-gray-50">
+    <div class="flex h-screen overflow-hidden">
+        <!-- Sidebar -->
+        <div class="hidden lg:flex lg:flex-shrink-0 w-64 border-r border-gray-200 bg-white">
+            <div class="flex flex-col w-full">
+                <div class="flex items-center h-16 px-4 border-b border-gray-200">
+                    <h1 class="text-lg font-semibold text-gray-900">MicroTech</h1>
+                </div>
+                <nav class="flex-1 p-4 space-y-1">
+                    <a href="index.html" class="flex items-center px-3 py-2 text-sm font-medium text-gray-600 rounded-lg hover:bg-gray-100">
+                        <i data-feather="home" class="w-4 h-4 mr-3"></i>
+                        Dashboard
+                    </a>
+                    <a href="candidates.html" class="flex items-center px-3 py-2 text-sm font-medium text-gray-600 rounded-lg hover:bg-gray-100">
+                        <i data-feather="users" class="w-4 h-4 mr-3"></i>
+                        Candidates
+                    </a>
+                    <a href="role-builder.html" class="flex items-center px-3 py-2 text-sm font-medium text-gray-600 rounded-lg hover:bg-gray-100">
+                        <i data-feather="file-text" class="w-4 h-4 mr-3"></i>
+                        Role Builder
+                    </a>
+                    <a href="job-analytics.html" class="flex items-center px-3 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg">
+                        <i data-feather="bar-chart-2" class="w-4 h-4 mr-3"></i>
+                        Job Analytics
+                    </a>
+                </nav>
+            </div>
+        </div>
+
+        <!-- Main content -->
+        <div class="flex-1 overflow-auto">
+            <div class="flex flex-col h-full">
+                <!-- Header -->
+                <header class="bg-white border-b border-gray-200">
+                    <div class="flex items-center justify-between px-6 py-4">
+                        <h2 class="text-xl font-semibold text-gray-900">Job Analytics</h2>
+                        <div class="flex items-center space-x-3">
+                            <div class="relative">
+                                <select class="block w-full pl-3 pr-8 py-2 text-base border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-lg border">
+                                    <option>Last 30 days</option>
+                                    <option>Last 90 days</option>
+                                    <option>This year</option>
+                                    <option>All time</option>
+                                </select>
+                            </div>
+                            <button class="inline-flex items-center px-3 py-2 text-sm font-medium rounded-lg border border-gray-300 bg-white text-gray-700 hover:bg-gray-50">
+                                <i data-feather="download" class="w-4 h-4 mr-2"></i>
+                                Export
+                            </button>
+                        </div>
+                    </div>
+                </header>
+
+                <!-- Content -->
+                <main class="flex-1 overflow-auto bg-gray-50 p-6">
+                    <div class="max-w-7xl mx-auto">
+                        <!-- Stats -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
+                            <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+                                <div class="flex items-center justify-between">
+                                    <div>
+                                        <p class="text-sm font-medium text-gray-500">Open Positions</p>
+                                        <h3 class="text-2xl font-semibold text-gray-900 mt-1">24</h3>
+                                    </div>
+                                    <div class="p-3 rounded-lg bg-blue-100 text-blue-600">
+                                        <i data-feather="briefcase" class="w-6 h-6"></i>
+                                    </div>
+                                </div>
+                                <p class="text-sm text-gray-500 mt-2"><span class="text-green-600 font-medium">+3</span> from last month</p>
+                            </div>
+                            <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+                                <div class="flex items-center justify-between">
+                                    <div>
+                                        <p class="text-sm font-medium text-gray-500">Active Candidates</p>
+                                        <h3 class="text-2xl font-semibold text-gray-900 mt-1">142</h3>
+                                    </div>
+                                    <div class="p-3 rounded-lg bg-green-100 text-green-600">
+                                        <i data-feather="users" class="w-6 h-6"></i>
+                                    </div>
+                                </div>
+                                <p class="text-sm text-gray-500 mt-2"><span class="text-green-600 font-medium">+12%</span> from last month</p>
+                            </div>
+                            <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+                                <div class="flex items-center justify-between">
+                                    <div>
+                                        <p class="text-sm font-medium text-gray-500">Avg. Time to Hire</p>
+                                        <h3 class="text-2xl font-semibold text-gray-900 mt-1">32 days</h3>
+                                    </div>
+                                    <div class="p-3 rounded-lg bg-purple-100 text-purple-600">
+                                        <i data-feather="clock" class="w-6 h-6"></i>
+                                    </div>
+                                </div>
+                                <p class="text-sm text-gray-500 mt-2"><span class="text-red-600 font-medium">+2 days</span> from last quarter</p>
+                            </div>
+                            <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+                                <div class="flex items-center justify-between">
+                                    <div>
+                                        <p class="text-sm font-medium text-gray-500">Offer Acceptance</p>
+                                        <h3 class="text-2xl font-semibold text-gray-900 mt-1">78%</h3>
+                                    </div>
+                                    <div class="p-3 rounded-lg bg-yellow-100 text-yellow-600">
+                                        <i data-feather="check-circle" class="w-6 h-6"></i>
+                                    </div>
+                                </div>
+                                <p class="text-sm text-gray-500 mt-2"><span class="text-green-600 font-medium">+5%</span> from last quarter</p>
+                            </div>
+                        </div>
+
+                        <!-- Charts -->
+                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+                            <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+                                <div class="flex items-center justify-between mb-4">
+                                    <h3 class="text-lg font-medium text-gray-900">Applications by Role</h3>
+                                    <div class="relative">
+                                        <select class="block pl-3 pr-8 py-1 text-sm border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 rounded-lg border">
+                                            <option>Last 30 days</option>
+                                            <option>Last 90 days</option>
+                                            <option>This year</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="h-64">
+                                    <canvas id="applicationsChart"></canvas>
+                                </div>
+                            </div>
+                            <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+                                <div class="flex items-center justify-between mb-4">
+                                    <h3 class="text-lg font-medium text-gray-900">Pipeline Conversion</h3>
+                                    <div class="relative">
+                                        <select class="block pl-3 pr-8 py-1 text-sm border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 rounded-lg border">
+                                            <option>Last 30 days</option>
+                                            <option>Last 90 days</option>
+                                            <option>This year</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="h-64">
+                                    <canvas id="pipelineChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Top Roles -->
+                        <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6 mb-6">
+                            <div class="flex items-center justify-between mb-4">
+                                <h3 class="text-lg font-medium text-gray-900">Top Roles by Applications</h3>
+                                <button class="inline-flex items-center px-3 py-1.5 text-sm font-medium rounded-lg border border-gray-300 bg-white text-gray-700 hover:bg-gray-50">
+                                    View All
+                                </button>
+                            </div>
+                            <div class="overflow-x-auto">
+                                <table class="min-w-full divide-y divide-gray-200">
+                                    <thead class="bg-gray-50">
+                                        <tr>
+                                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Role</th>
+                                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Department</th>
+                                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Applications</th>
+                                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Avg. Match</th>
+                                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Time to Hire</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="bg-white divide-y divide-gray-200">
+                                        <tr>
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Senior Frontend Engineer</td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Engineering</td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">142</td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">78%</td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">28 days</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">UX Designer</td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Product</td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">98</td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">65%</td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">35 days</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Backend Engineer</td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Engineering</td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">87</td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">72%</td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">31 days</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <!-- Source Analysis -->
+                        <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+                            <div class="flex items-center justify-between mb-4">
+                                <h3 class="text-lg font-medium text-gray-900">Candidate Sources</h3>
+                                <button class="inline-flex items-center px-3 py-1.5 text-sm font-medium rounded-lg border border-gray-300 bg-white text-gray-700 hover:bg-gray-50">
+                                    View All
+                                </button>
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div class="h-64">
+                                    <canvas id="sourceChart"></canvas>
+                                </div>
+                                <div>
+                                    <div class="space-y-4">
+                                        <div>
+                                            <div class="flex items-center justify-between mb-1">
+                                                <span class="text-sm font-medium text-gray-900">LinkedIn</span>
+                                                <span class="text-sm text-gray-500">42%</span>
+                                            </div>
+                                            <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                                <div class="bg-blue-600 h-2.5 rounded-full" style="width: 42%"></div>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="flex items-center justify-between mb-1">
+                                                <span class="text-sm font-medium text-gray-900">Indeed</span>
+                                                <span class="text-sm text-gray-500">28%</span>
+                                            </div>
+                                            <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                                <div class="bg-green-600 h-2.5 rounded-full" style="width: 28%"></div>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="flex items-center justify-between mb-1">
+                                                <span class="text-sm font-medium text-gray-900">Employee Referrals</span>
+                                                <span class="text-sm text-gray-500">15%</span>
+                                            </div>
+                                            <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                                <div class="bg-purple-600 h-2.5 rounded-full" style="width: 15%"></div>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="flex items-center justify-between mb-1">
+                                                <span class="text-sm font-medium text-gray-900">Career Site</span>
+                                                <span class="text-sm text-gray-500">10%</span>
+                                            </div>
+                                            <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                                <div class="bg-yellow-600 h-2.5 rounded-full" style="width: 10%"></div>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="flex items-center justify-between mb-1">
+                                                <span class="text-sm font-medium text-gray-900">Other</span>
+                                                <span class="text-sm text-gray-500">5%</span>
+                                            </div>
+                                            <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                                <div class="bg-red-600 h-2.5 rounded-full" style="width: 5%"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Applications Chart
+        const applicationsCtx = document.getElementById('applicationsChart').getContext('2d');
+        const applicationsChart = new Chart(applicationsCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Frontend', 'Backend', 'UX', 'Product', 'Data', 'DevOps'],
+                datasets: [{
+                    label: 'Applications',
+                    data: [45, 28, 32, 19, 12, 8],
+                    backgroundColor: '#3B82F6',
+                    borderRadius: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                }
+            }
+        });
+
+        // Pipeline Chart
+        const pipelineCtx = document.getElementById('pipelineChart').getContext('2d');
+        const pipelineChart = new Chart(pipelineCtx, {
+            type: 'line',
+            data: {
+                labels: ['Applied', 'Screened', 'Interview', 'Offer', 'Hired'],
+                datasets: [{
+                    label: 'Candidates',
+                    data: [100, 65, 32, 15, 8],
+                    borderColor: '#10B981',
+                    backgroundColor: 'rgba(16, 185, 129, 0.1)',
+                    fill: true,
+                    tension: 0.3
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                }
+            }
+        });
+
+        // Source Chart
+        const sourceCtx = document.getElementById('sourceChart').getContext('2d');
+        const sourceChart = new Chart(sourceCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['LinkedIn', 'Indeed', 'Referrals', 'Career Site', 'Other'],
+                datasets: [{
+                    data: [42, 28, 15, 10, 5],
+                    backgroundColor: [
+                        '#3B82F6',
+                        '#10B981',
+                        '#8B5CF6',
+                        '#F59E0B',
+                        '#EF4444'
+                    ],
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'right'
+                    }
+                },
+                cutout: '70%'
+            }
+        });
+    </script>
+    <script>feather.replace();</script>
+</body>
+</html>

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MicroTech Recruiter Suite</title>
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.globe.min.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .vanta-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.15;
+        }
+        
+        /* Smooth hover effects */
+        .group:hover .group-hover\:scale-110 {
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        /* Card hover effects */
+        .hover\:shadow-xl:hover {
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            transition: all 0.3s ease;
+        }
+        
+        /* Gradient backgrounds */
+        .bg-gradient-to-br {
+            background-size: 150% 150%;
+            animation: gradient 15s ease infinite;
+        }
+        
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        /* Text animations */
+        .text-gradient {
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            background-image: linear-gradient(45deg, #3b82f6, #8b5cf6);
+            animation: gradient 3s ease infinite;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <div id="vanta-bg" class="vanta-bg"></div>
+    
+    <div class="container mx-auto px-4 py-12 max-w-7xl">
+        <!-- Hero Section -->
+        <header class="mb-20 text-center">
+            <h1 class="text-6xl font-bold text-gray-900 mb-6 leading-tight">
+                MicroTech Recruiter Suite
+            </h1>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                Smart recruiting tools to find, assess, and hire top talent faster.
+            </p>
+        </header>
+
+        <!-- Main Features Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+            <!-- Candidates Card -->
+            <a href="candidates.html" class="group">
+                <div class="bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-200 p-8 h-full transform hover:-translate-y-1">
+                    <div class="flex items-center justify-center w-16 h-16 bg-gradient-to-br from-blue-400 to-blue-600 rounded-2xl mb-6 group-hover:scale-110 transition-transform duration-300">
+                        <i data-feather="users" class="w-8 h-8 text-white"></i>
+                    </div>
+                    <h3 class="text-2xl font-semibold text-gray-900 mb-4">Candidates</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Discover and rank candidates with iCIMS integration. Streamline your talent pipeline and make better hiring decisions.
+                    </p>
+                    <div class="mt-6 flex items-center text-blue-600 font-medium">
+                        <span>Explore Candidates</span>
+                        <i data-feather="arrow-right" class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform"></i>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Role Builder Card -->
+            <a href="role-builder.html" class="group">
+                <div class="bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-200 p-8 h-full transform hover:-translate-y-1">
+                    <div class="flex items-center justify-center w-16 h-16 bg-gradient-to-br from-purple-400 to-purple-600 rounded-2xl mb-6 group-hover:scale-110 transition-transform duration-300">
+                        <i data-feather="file-text" class="w-8 h-8 text-white"></i>
+                    </div>
+                    <h3 class="text-2xl font-semibold text-gray-900 mb-4">Role Builder</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Generate perfect job descriptions in minutes using AI. Create compelling posts that attract top talent.
+                    </p>
+                    <div class="mt-6 flex items-center text-purple-600 font-medium">
+                        <span>Build Roles</span>
+                        <i data-feather="arrow-right" class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform"></i>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Job Analytics Card -->
+            <a href="job-analytics.html" class="group">
+                <div class="bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-200 p-8 h-full transform hover:-translate-y-1">
+                    <div class="flex items-center justify-center w-16 h-16 bg-gradient-to-br from-orange-400 to-orange-600 rounded-2xl mb-6 group-hover:scale-110 transition-transform duration-300">
+                        <i data-feather="bar-chart-2" class="w-8 h-8 text-white"></i>
+                    </div>
+                    <h3 class="text-2xl font-semibold text-gray-900 mb-4">Job Analytics</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Compare positions and optimize your hiring funnel with data-driven insights and metrics.
+                    </p>
+                    <div class="mt-6 flex items-center text-orange-600 font-medium">
+                        <span>View Analytics</span>
+                        <i data-feather="arrow-right" class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform"></i>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <!-- Stats Section -->
+        <div class="bg-white rounded-2xl shadow-md border border-gray-200 p-8 mb-16">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="text-center">
+                    <div class="text-4xl font-bold text-blue-600 mb-2">500+</div>
+                    <div class="text-gray-600">Job Descriptions Generated</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl font-bold text-purple-600 mb-2">1,000+</div>
+                    <div class="text-gray-600">Candidates Processed</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl font-bold text-orange-600 mb-2">98%</div>
+                    <div class="text-gray-600">Customer Satisfaction</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="text-center">
+            <div class="mb-4">
+                <img src="https://via.placeholder.com/150x50?text=MicroTech" alt="MicroTech Logo" class="h-8 mx-auto">
+            </div>
+            <p class="text-gray-600">
+                © 2025 MicroTech Recruiter Suite. All rights reserved.
+            </p>
+        </footer>
+    </div>
+
+    <script>
+        VANTA.GLOBE({
+            el: "#vanta-bg",
+            mouseControls: true,
+            touchControls: true,
+            gyroControls: false,
+            minHeight: 200.00,
+            minWidth: 200.00,
+            scale: 1.00,
+            scaleMobile: 1.00,
+            color: "#3b82f6",
+            backgroundColor: "#f9fafb"
+        });
+    </script>
+    <script>feather.replace();</script>
+</body>
+</html>
