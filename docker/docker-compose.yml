@@ -1,0 +1,90 @@
+# MicroTech Recruiter Suite - Docker Compose
+# CMMC Level 2 Compliant Configuration
+# Production-ready with security hardening
+
+services:
+  recruiter-mt:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+      args:
+        NODE_ENV: production
+        BUILD_DATE: ${BUILD_DATE:-$(date -u +'%Y-%m-%dT%H:%M:%SZ')}
+        VCS_REF: ${VCS_REF:-$(git rev-parse --short HEAD)}
+    
+    image: recruiter-mt:${VERSION:-1.1.0}
+    container_name: recruiter-mt-app
+    
+    # Security: Prevent privilege escalation (CMMC AC.3.1.1)
+    security_opt:
+      - no-new-privileges:true
+    
+    # Resource limits (CMMC SC.3.13.5 - Resource Availability)
+    deploy:
+      resources:
+        limits:
+          cpus: '1.0'
+          memory: 512M
+        reservations:
+          cpus: '0.5'
+          memory: 256M
+    
+    # Environment variables (use secrets in production)
+    environment:
+      - NODE_ENV=production
+      - PORT=5173
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - MODEL=${MODEL:-gpt-4o-mini}
+    
+    # DNS servers for external API access
+    dns:
+      - 8.8.8.8
+      - 8.8.4.4
+    
+    # Port mapping
+    ports:
+      - "5173:5173"
+    
+    # Temporary filesystems for writable directories (CMMC SC.3.13.1)
+    tmpfs:
+      - /tmp:mode=1777,size=100m,uid=1001,gid=1001
+      - /app/logs:mode=0750,size=50m,uid=1001,gid=1001
+    
+    # Health check
+    healthcheck:
+      test: ["CMD", "node", "-e", "require('http').get('http://localhost:5173/', (r) => r.statusCode === 200 ? process.exit(0) : process.exit(1))"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    
+    # Restart policy
+    restart: unless-stopped
+    
+    # Logging configuration (CMMC AU.3.3.1 - Audit Events)
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+        labels: "service,version"
+        env: "NODE_ENV"
+    
+    # Labels for tracking and compliance
+    labels:
+      - "com.microtech.service=recruiter-mt"
+      - "com.microtech.version=${VERSION:-1.1.0}"
+      - "com.microtech.security.level=CMMC-L2"
+      - "com.microtech.compliance=NIST-800-171"
+    
+    # Use default bridge network (simpler, works with WSL)
+
+# Volumes (if needed for persistent data)
+volumes:
+  app_logs:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: ./logs
+

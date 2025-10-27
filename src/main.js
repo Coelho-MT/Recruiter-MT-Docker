@@ -1,10 +1,13 @@
 import { initRoleBuilder } from './pages/roleBuilder.js';
+import { ErrorHandler } from './util/errorHandler.js';
 
-function onReady(fn){ document.readyState !== 'loading' ? fn() : document.addEventListener('DOMContentLoaded', fn); }
+// Initialize global error handling
+ErrorHandler.setupGlobalHandlers();
 
-onReady(() => {
-  const path = window.location.pathname;
-  if (path.endsWith('/role-builder.html')) {
+// Initialize page-specific functionality
+document.addEventListener('DOMContentLoaded', () => {
+  // Initialize role builder if on role builder page
+  if (document.getElementById('job-title')) {
     initRoleBuilder();
   }
 });
